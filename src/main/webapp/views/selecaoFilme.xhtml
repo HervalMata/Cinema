@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Cinema</title>
+	<link rel="stylesheet" type="text/css"
+		href="../resources/css/custom.css"></link>
+</h:head>
+<body>
+
+
+
+	<div class="ui-g">
+
+		<div class="ui-g-5" align="center" style="margin: 0 auto;">
+
+			<p:panel>
+
+				<p:steps style="margin: 10px;">
+					<p:menuitem value="Filme" />
+					<p:menuitem value="Sessão" />
+					<p:menuitem value="Assento" />
+					<p:menuitem value="Reserva" />
+				</p:steps>
+
+				<h:form>
+
+					<p:carousel value="#{selecaoFilmeView.images}" headerText="Filme"
+						var="image" numVisible="1" easing="easeInOutBack"
+						style="width:96.5%">
+
+						<p:panelGrid bgcolor="red" width="100%;">
+
+							<p:row>
+
+								<p:column>
+									<p:graphicImage library="img" name="#{image}" />
+								</p:column>
+
+								<p:column rowspan="2">
+
+									<p:panel header="Detalhes"
+										style="width:250px; height: 370px; margin-top: -5px;">
+
+										<h:panelGrid cellpadding="10">
+
+											<h:outputText value="Nome do filme" />
+											<h:outputText value="Duração" />
+
+										</h:panelGrid>
+										
+										<p:accordionPanel activeIndex="null" style="margin-top: 30px;">
+											<p:tab title="sinopse">
+											
+												<h:panelGrid style="font-size: 12px; margin: -10px 0 0 -25px; width:200px;">
+													<h:outputText value="Esse filme é dahora, acontece um monte de coisa. Neguinho morre, o pau quebra... Muita ação! Vale a pena assistir!" />
+												</h:panelGrid>
+												
+											</p:tab>
+										</p:accordionPanel>
+
+
+									</p:panel>
+
+
+
+								</p:column>
+
+							</p:row>
+
+							<p:row>
+								<p:column>
+
+									<p:commandButton value="Escolher este filme"
+										styleClass="ui-priority-primary" icon="ui-icon-check"
+										style="font-size: 14px ;width: 100%; padding: 4px;" />
+
+								</p:column>
+
+							</p:row>
+
+						</p:panelGrid>
+
+					</p:carousel>
+					<div align="right">
+						<p:commandButton value="Próximo" styleClass="ui-priority-primary"
+							icon="ui-icon-arrowthick-1-e" style="margin: 10px 10px 0 0;" />
+					</div>
+				</h:form>
+			</p:panel>
+		</div>
+	</div>
+
+	<f:facet name="footer">
+		<p:row>
+			<p:column colspan="4" style="text-align: right">
+                Finals MVP
+            </p:column>
+			<p:column colspan="3" rowspan="3">
+                Michael Jordan (Chicago)
+            </p:column>
+		</p:row>
+
+		<p:row>
+			<p:column colspan="4" style="text-align: right">
+                Season MVP
+            </p:column>
+		</p:row>
+		<p:row>
+			<p:column colspan="4" style="text-align: right">
+                Top Scorer
+            </p:column>
+		</p:row>
+	</f:facet>
+
+</body>
+</html>
