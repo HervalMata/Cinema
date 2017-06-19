@@ -1,7 +1,0 @@
-@CHARSET "utf-8";
-
-.ui-steps .ui-steps-item {
-	width: 25%;
-}
-
-.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight  {border: 1px solid #8e8e8e; background: #e1e1e1 url("#{resource['primefaces-black-tie:images/ui-bg_inset-hard_55_e1e1e1_1x100.png']}") 50% bottom repeat-x; color: #363636; }

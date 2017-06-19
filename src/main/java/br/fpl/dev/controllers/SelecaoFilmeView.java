@@ -1,14 +1,17 @@
 package br.fpl.dev.controllers;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 
 import br.fpl.dev.entities.Filme;
+import br.fpl.dev.services.FilmeServiceIF;
 
 @ManagedBean
 @SessionScoped
@@ -18,57 +21,55 @@ public class SelecaoFilmeView implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = -1183670266389529517L;
-
+	
+	@Inject
+	private FilmeServiceIF service;
+	
 	private List<Filme> filmes;
 
-	private List<String> images;
+	private String filmeSelecionado;
 	
-	private String option;
 	
+	/**
+	 * Inicia a lista com todos os filmes do banco
+	 */
 	@PostConstruct
     public void init() {
-        images = new ArrayList<>();
-         
-        images.add("mulher-maravilha.jpg");
-        images.add("a-mumia.jpg");
-        images.add("piratas-do-caribe.jpg");
-        images.add("neve-negra.jpg");
-        images.add("meus-15-anos.jpg");
-        images.add("a-cabana.jpg");
-        images.add("o-jardin-das-aflicoes.jpg");
+      filmes = service.buscarTodosFilmes();
     }
-
 	
+	/**
+	 * 
+	 * @return página inicial
+	 */
+	public String voltar(){
+		return "/index.jsf?faces-redirect=true";
+	}
+    
+    /**
+	 * exibe a mensagem do filme selecionado
+	 * @param actionEvent
+	 */
+    public void exibirMensagem() {
+        FacesContext context = FacesContext.getCurrentInstance();
+         
+        context.addMessage(null, new FacesMessage("Filme selecionado: ", filmeSelecionado) );
+    }
 	
-	
-	public String getOption() {
-		return option;
+	public String getFilmeSelecionado() {
+		return filmeSelecionado;
 	}
 
-
-
-
-	public void setOption(String option) {
-		this.option = option;
+	public void setFilmeSelecionado(String filmeSelecionado) {
+		this.filmeSelecionado = filmeSelecionado;
 	}
 
-
-
-
-	public List<String> getImages() {
-		return images;
-	}
-
-	public void setImages(List<String> images) {
-		this.images = images;
-	}
-
-	public List<Filme> getFilme() {
+	public List<Filme> getFilmes() {
 		return filmes;
 	}
 
-	public void setFilme(List<Filme> filme) {
-		this.filmes = filme;
+	public void setFilmes(List<Filme> filmes) {
+		this.filmes = filmes;
 	}
 
 }

@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Cinema</title>
+	 
+	<style>
+		.ui-steps .ui-steps-item {
+			width: 25%;
+		}
+		.ui-state-highlight, .ui-widget-content .ui-state-highlight,
+			.ui-widget-header .ui-state-highlight {
+			border: 1px solid #8e8e8e;
+			background: #e1e1e1
+				url("#{resource['primefaces-black-tie:images/ui-bg_inset-hard_55_e1e1e1_1x100.png']}")
+				50% bottom repeat-x;
+			color: #363636;
+			
+		}
+</style>
+
+</h:head>
+<body>
+
+
+
+	<div class="ui-g">
+
+		<div class="ui-g-5" align="center" style="margin: 0 auto;">
+
+			<p:panel>
+
+				<p:steps style="margin: 10px;">
+					<p:menuitem value="Filme" />
+					<p:menuitem value="Sessão" />
+					<p:menuitem value="Assento" />
+					<p:menuitem value="Reserva" />
+				</p:steps>
+
+				<h:form>
+					
+
+					<p:carousel value="#{selecaoFilmeView.filmes}" headerText="Filme"
+						var="filme" numVisible="1" easing="easeInOutBack"
+						style="width:96.5%">
+
+						<p:panelGrid width="100%;">
+
+							<p:row>
+
+								<p:column>
+									<p:graphicImage library="img" name="#{filme.imagem}" />
+								</p:column>
+
+								<p:column rowspan="2">
+
+									<p:panel header="Detalhes"
+										style="width:250px; height: 390px; margin-top: -5px;">
+
+										<h:panelGrid cellpadding="10">
+
+											<h:outputText value="#{filme.titulo}" />
+											<h:outputText value="#{filme.duracao} min" />
+
+										</h:panelGrid>
+
+										<p:accordionPanel activeIndex="null" style="margin-top: 30px;">
+											<p:tab title="sinopse">
+
+												<h:panelGrid
+													style="font-size: 12px; margin: -10px 0 0 -25px; width:200px;">
+													<h:outputText value="#{filme.sinopse}" />
+												</h:panelGrid>
+
+											</p:tab>
+										</p:accordionPanel>
+
+									</p:panel>
+
+								</p:column>
+
+							</p:row>
+
+							<p:row>
+								<p:growl id="growl" showDetail="true" life="3000"/>
+								<p:column>
+									
+									<p:commandButton
+										action="#{selecaoFilmeView.exibirMensagem()}"
+										value="Escolher este filme" styleClass="ui-priority-primary"
+										icon="ui-icon-check" update="growl"
+										style="font-size: 14px ;width: 100%; padding: 4px;">
+										
+										<f:setPropertyActionListener value="#{filme.titulo}"
+											target="#{selecaoFilmeView.filmeSelecionado}" />
+									</p:commandButton>
+									
+								</p:column>
+
+							</p:row>
+
+						</p:panelGrid>
+
+					</p:carousel>
+
+					<h:panelGrid columns="2" width="97%">
+
+						<p:commandButton action="#{selecaoFilmeView.voltar()}"
+							value="Voltar" styleClass="ui-priority-primary"
+							icon="ui-icon-arrowthick-1-w" style="margin: 20px 0 0 5px;" />
+
+						<p:commandButton value="Próximo" styleClass="ui-priority-primary"
+							icon="ui-icon-arrowthick-1-e"
+							style="margin: 20px 2px 0 0; float: right;" />
+
+					</h:panelGrid>
+					
+				</h:form>
+			</p:panel>
+		</div>
+	</div>
+
+</body>
+</html>
