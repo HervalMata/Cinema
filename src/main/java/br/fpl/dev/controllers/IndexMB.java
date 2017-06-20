@@ -5,7 +5,7 @@ import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 
 @ManagedBean
-public class IndexView implements Serializable{
+public class IndexMB implements Serializable{
 
 	/**
 	 * 

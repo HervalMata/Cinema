@@ -6,26 +6,18 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-	<title>Cinema</title>
-	 
+	<title>Seleção de Filme | Cinema</title>
+
 	<style>
-		.ui-steps .ui-steps-item {
-			width: 25%;
-		}
-		.ui-state-highlight, .ui-widget-content .ui-state-highlight,
-			.ui-widget-header .ui-state-highlight {
-			border: 1px solid #8e8e8e;
-			background: #e1e1e1
-				url("#{resource['primefaces-black-tie:images/ui-bg_inset-hard_55_e1e1e1_1x100.png']}")
-				50% bottom repeat-x;
-			color: #363636;
-			
-		}
+.ui-steps .ui-steps-item {
+	width: 25%;
+}
+
+
 </style>
 
 </h:head>
 <body>
-
 
 
 	<div class="ui-g">
@@ -42,9 +34,9 @@
 				</p:steps>
 
 				<h:form>
-					
 
-					<p:carousel value="#{selecaoFilmeView.filmes}" headerText="Filme"
+
+					<p:carousel value="#{selecaoFilmeMB.filmes}" headerText="Filmes"
 						var="filme" numVisible="1" easing="easeInOutBack"
 						style="width:96.5%">
 
@@ -86,19 +78,19 @@
 							</p:row>
 
 							<p:row>
-								<p:growl id="growl" showDetail="true" life="3000"/>
+								<p:growl id="growl" showDetail="true" life="3000" />
 								<p:column>
-									
-									<p:commandButton
-										action="#{selecaoFilmeView.exibirMensagem()}"
+
+									<p:commandButton action="#{selecaoFilmeMB.exibirMensagem()}"
 										value="Escolher este filme" styleClass="ui-priority-primary"
 										icon="ui-icon-check" update="growl"
 										style="font-size: 14px ;width: 100%; padding: 4px;">
-										
+
 										<f:setPropertyActionListener value="#{filme.titulo}"
-											target="#{selecaoFilmeView.filmeSelecionado}" />
+											target="#{selecaoFilmeMB.filmeSelecionado}" />
+
 									</p:commandButton>
-									
+
 								</p:column>
 
 							</p:row>
@@ -109,16 +101,17 @@
 
 					<h:panelGrid columns="2" width="97%">
 
-						<p:commandButton action="#{selecaoFilmeView.voltar()}"
+						<p:commandButton action="#{selecaoFilmeMB.voltar()}"
 							value="Voltar" styleClass="ui-priority-primary"
 							icon="ui-icon-arrowthick-1-w" style="margin: 20px 0 0 5px;" />
 
-						<p:commandButton value="Próximo" styleClass="ui-priority-primary"
+						<p:commandButton  actionListener="#{selecaoSessaoMB.buscarSessoes()}" action="#{selecaoFilmeMB.proximo()}"
+							value="Próximo" styleClass="ui-priority-primary"
 							icon="ui-icon-arrowthick-1-e"
 							style="margin: 20px 2px 0 0; float: right;" />
 
 					</h:panelGrid>
-					
+
 				</h:form>
 			</p:panel>
 		</div>
