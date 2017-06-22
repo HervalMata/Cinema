@@ -1,13 +1,79 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"> 
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-	<title>Seleção de Assento | Cinema </title>
-</h:head> 
-<body> 
-	<h:outputText value="Pagina assento!" />
-</body> 
+	<title>Seleção de Assento | Cinema</title>
+	<style>
+.ui-steps .ui-steps-item {
+	width: 25%;
+}
+body .ui-buttonset .ui-button {
+    margin: 10px 10px 0 0;
+}
+</style>
+</h:head>
+<body>
+	<div class="ui-g">
+
+		<div class="ui-g-5" align="center" style="margin: 0 auto;">
+
+			<p:panel>
+
+				<p:steps activeIndex="2" style="margin: 10px;">
+					<p:menuitem value="Filme" />
+					<p:menuitem value="Sessão" />
+					<p:menuitem value="Assento" />
+					<p:menuitem value="Reserva" />
+				</p:steps>
+
+				<h:form>
+					<h:panelGrid columns="2" width="98%">
+
+						<p:panel header="Filme" style="width:320px; text-align: center">
+							<h:outputText value="#{selecaoFilmeMB.filmeSelecionado}"
+								style="font-size: 16px;" />
+						</p:panel>
+						<p:panel header="Sessão" style="width:170px; text-align: center">
+
+							<h:outputText
+								value="#{selecaoAssentoMB.sdf.format(selecaoAssentoMB.sessaoSelecionada.horario.hora)}h - 
+											Sala: #{selecaoAssentoMB.sessaoSelecionada.sala.numero} " />
+						</p:panel>
+
+					</h:panelGrid>
+					<p:panel header="Assentos Disponíveis" style="width:95%; height: 354px; text-align: center">
+					
+						<h:panelGrid columns="6" width="100%" cellpadding="20" style="margin-left: 10px;">
+							<p:selectOneButton value="#{selecaoAssentoMB.assentoSelecionado}">
+							
+								<f:selectItems value="#{selecaoAssentoMB.assentos}" var="assento"
+								 itemLabel="#{assento.numeracao}" itemValue="#{assento.id}" itemDisabled="#{assento.ocupado}" />
+								
+							</p:selectOneButton>
+						</h:panelGrid>
+
+					</p:panel>
+					<h:panelGrid columns="2" width="97%">
+
+						<p:commandButton action="#{selecaoAssentoMB.voltar()}"
+							value="Voltar" styleClass="ui-priority-primary"
+							icon="ui-icon-arrowthick-1-w" style="margin: 20px 0 0 5px;" />
+
+						<p:commandButton action="#{selecaoAssentoMB.proximo()}"
+							value="Próximo" styleClass="ui-priority-primary"
+							icon="ui-icon-arrowthick-1-e"
+							style="margin: 20px 2px 0 0; float: right;" />
+
+					</h:panelGrid>
+				</h:form>
+
+			</p:panel>
+		</div>
+	</div>
+
+</body>
 </html>

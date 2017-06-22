@@ -30,5 +30,9 @@ public class SessaoServiceImpl implements SessaoServiceIF {
 		
 		return sessoesFilme;
 	}
+	
+	public Sessao buscarSessaoPorId(long id){
+		return dao.buscarPorId(id);
+	}
 
 }

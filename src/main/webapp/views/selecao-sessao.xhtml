@@ -34,16 +34,16 @@
 
 				<h:form>
 					<p:panel header="Filme" style="width:95%">
-						<h:outputText value="#{selecaoSessaoMB.selecaoFilme.filmeSelecionado}" />
+						<h:outputText value="#{selecaoFilmeMB.filmeSelecionado}" />
 					</p:panel>
-					<p:panel header="Sessões" style="width:95%; height: 361px;">
+					<p:panel header="Sessões" style="width:95%; height: 360px;">
 						<h:panelGrid columns="1" cellpadding="20" >
 							
 							<h:selectOneRadio value="#{selecaoSessaoMB.sessaoSelecionada}" layout="pageDirection" style="height: 180px; font-size: 15px; font-weight: bold;" >
 								
 								<f:selectItems value="${selecaoSessaoMB.sessoes}" var="sessao" 
 								itemLabel="Sessão: #{selecaoSessaoMB.sessoes.indexOf(sessao) + 1} - 
-													Horario: #{selecaoSessaoMB.sdf.format(sessao.horario.hora)} -
+													Horario: #{selecaoSessaoMB.sdf.format(sessao.horario.hora)}h -
 													Sala: #{sessao.sala.numero}."
 								itemValue="#{sessao.id}">
 								
@@ -59,7 +59,7 @@
 							value="Voltar" styleClass="ui-priority-primary"
 							icon="ui-icon-arrowthick-1-w" style="margin: 20px 0 0 5px;" />
 
-						<p:commandButton action="#{selecaoSessaoMB.proximo()}" value="Próximo" styleClass="ui-priority-primary"
+						<p:commandButton actionListener="#{selecaoAssentoMB.exibirResultados()}"  action="#{selecaoSessaoMB.proximo()}" value="Próximo" styleClass="ui-priority-primary"
 							icon="ui-icon-arrowthick-1-e"
 							style="margin: 20px 2px 0 0; float: right;"/>
 							

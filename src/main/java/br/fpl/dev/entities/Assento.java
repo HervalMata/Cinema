@@ -28,7 +28,10 @@ public class Assento implements Serializable {
 	private long id;
 	
 	@Column(nullable=false)
-	private int numeracao;
+	private String numeracao;
+	
+	@Column(nullable=false)
+	private boolean ocupado;
 	
 	@OneToMany(mappedBy="assento", targetEntity=Reserva.class, fetch=FetchType.LAZY, cascade=CascadeType.ALL)
 	private List<Reserva> reservas;
@@ -40,12 +43,19 @@ public class Assento implements Serializable {
 	public void setId(long id) {
 		this.id = id;
 	}
-
-	public int getNumeracao() {
+	
+	public String getNumeracao() {
 		return numeracao;
 	}
-	public void setNumeracao(int numeracao) {
+	public void setNumeracao(String numeracao) {
 		this.numeracao = numeracao;
+	}
+	
+	public boolean isOcupado() {
+		return ocupado;
+	}
+	public void setOcupado(boolean ocupado) {
+		this.ocupado = ocupado;
 	}
 	
 	public List<Reserva> getReservas() {

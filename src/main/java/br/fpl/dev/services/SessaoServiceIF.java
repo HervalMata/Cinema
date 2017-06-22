@@ -8,4 +8,6 @@ public interface SessaoServiceIF {
 	
 	public List<Sessao> buscarSessaoPorFilme(String titulo);
 	
+	public Sessao buscarSessaoPorId(long id);
+	
 }

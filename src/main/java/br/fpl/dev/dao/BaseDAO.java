@@ -67,5 +67,17 @@ public abstract class BaseDAO<T> {
 			throw e;
 		}
 	}
-
+	
+	/**
+	 * Método para buscar objeto no banco pelo id
+	 * @param id
+	 * @return
+	 */
+	public T buscarPorId(long id){
+		try{
+			return em.find(this.tipo, id);
+		} catch (Exception e){
+			throw e;
+		}
+	}
 }
