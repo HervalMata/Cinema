@@ -12,8 +12,6 @@
 .ui-steps .ui-steps-item {
 	width: 25%;
 }
-
-
 </style>
 
 </h:head>
@@ -34,7 +32,7 @@
 
 				<h:form>
 					<p:panel header="Filme" style="width:95%">
-						<h:outputText value="#{selecaoFilmeMB.filmeSelecionado}" />
+						<h:outputText value="#{selecaoSessaoMB.filmeSelecionado.titulo}" />
 					</p:panel>
 					<p:panel header="Sessões" style="width:95%; height: 360px;">
 						<h:panelGrid columns="1" cellpadding="20" >
@@ -59,7 +57,7 @@
 							value="Voltar" styleClass="ui-priority-primary"
 							icon="ui-icon-arrowthick-1-w" style="margin: 20px 0 0 5px;" />
 
-						<p:commandButton actionListener="#{selecaoAssentoMB.exibirResultados()}"  action="#{selecaoSessaoMB.proximo()}" value="Próximo" styleClass="ui-priority-primary"
+						<p:commandButton actionListener="#{selecaoAssentoMB.gerarAssento()}"  action="#{selecaoSessaoMB.proximo()}" value="Próximo" styleClass="ui-priority-primary"
 							icon="ui-icon-arrowthick-1-e"
 							style="margin: 20px 2px 0 0; float: right;"/>
 							

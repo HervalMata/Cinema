@@ -24,11 +24,18 @@
 
 					<p:panel header="Cinema">
 						<h:panelGrid columns="1" width="100%;">
-							<h:panelGrid columns="1" style="margin: 20px 0 50px 0; text-align: center;" width="100%">
-								<h:outputText value="Bem-vindo ao cinema!" style="font-size: 25px; font-weight: bold;"/>
+						
+							<h:panelGrid columns="1" style="margin: 20px 0 20px 0; text-align: center;" width="100%">
+								<h:outputText value="Reserva confimada!" style="font-size: 25px; font-weight: bold; margin-bottom: 20px;"/>
+								
 							</h:panelGrid>
-							<p:commandButton action="#{indexMB.fazerReserva()}" value="Fazer Reserva" style="padding: 5px; width:100%; margin: 3px;" />
-							<p:commandButton value="Ver Reserva" style="padding: 5px; width:100%; margin: 3px;" />
+							
+							<h:panelGrid columns="1" style="text-align: center; margin-bottom: 30px;" width="100%">
+								<h:outputText value="Código da reserva: " style="font-weight: bold;"/>
+								<h:outputText value="#{resultadoMB.reserva.codigo}" style="color: #afe075;"/>
+							</h:panelGrid>
+							
+							<p:commandButton action="#{resultadoMB.voltar()}" value="Voltar ao início" style="padding: 5px; width:100%; margin: 3px;" icon="ui-icon-home"/>
 						</h:panelGrid>
 					</p:panel>
 
@@ -39,4 +46,3 @@
 	</div>
 </body>
 </html>
-

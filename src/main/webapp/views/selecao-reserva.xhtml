@@ -1,11 +1,90 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"> 
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
 
-<h:head></h:head> 
-<body> 
-	<h:outputText value="tela Reserva!" />>
-</body> 
+<h:head>
+	<title>Seleção de Reserva | Cinema</title>
+	<style>
+.ui-steps .ui-steps-item {
+	width: 25%;
+}
+
+body .ui-buttonset .ui-button {
+	margin: 10px 10px 0 0;
+}
+</style>
+</h:head>
+<body>
+	<div class="ui-g">
+
+		<div class="ui-g-5" align="center" style="margin: 0 auto;">
+
+			<p:panel>
+
+				<p:steps activeIndex="3" style="margin: 10px;">
+					<p:menuitem value="Filme" />
+					<p:menuitem value="Sessão" />
+					<p:menuitem value="Assento" />
+					<p:menuitem value="Reserva" />
+				</p:steps>
+
+				<h:form>
+
+					<p:panel header="Dados da reserva"
+						style="width:95%; height: 449px; text-align: center">
+
+						<h:panelGrid columns="2" width="100%"
+							style="margin: 30px 0 30px 0; text-align: left; font-size: 15px;"
+							cellpadding="20" border="2">
+							<p:outputLabel value="Título do filme:" style="font-weight: bold" />
+							<p:outputLabel value="#{selecaoReservaMB.sessao.filme.titulo}" />
+							<p:outputLabel value="Horario:" style="font-weight: bold" />
+							<p:outputLabel
+								value="#{selecaoReservaMB.sdf.format(selecaoReservaMB.sessao.horario.hora)}h" />
+							<p:outputLabel value="Sala:" style="font-weight: bold" />
+							<p:outputLabel value="#{selecaoReservaMB.sessao.sala.numero}" />
+							<p:outputLabel value="Assento:" style="font-weight: bold" />
+							<p:outputLabel value="#{selecaoReservaMB.assento.numeracao}" />
+
+
+						</h:panelGrid>
+						<h:panelGrid width="100%">
+
+							<p:commandButton action="#{selecaoReservaMB.confirmarReserva()}"
+								value="Finalizar reserva"
+								styleClass="ui-priority-primary" icon="ui-icon-check"
+								style="margin: 20px 0 0 0; width:100%; padding: 5px">
+
+								<p:confirm header="Confirmação" message="Deseja confirmar a reserva?" />
+
+							</p:commandButton>
+							
+							<p:confirmDialog global="true" showEffect="fade" hideEffect="fade" >
+								<p:commandButton value="Sim" type="button"
+									styleClass="ui-confirmdialog-yes" icon="ui-icon-check" style="margin-left: 45px"/>
+								<p:commandButton value="Não" type="button"
+									styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+							</p:confirmDialog>
+
+						</h:panelGrid>
+
+
+					</p:panel>
+					<h:panelGrid columns="2" width="97%">
+
+						<p:commandButton action="#{selecaoReservaMB.voltar()}"
+							value="Voltar" styleClass="ui-priority-primary"
+							icon="ui-icon-arrowthick-1-w" style="margin: 20px 0 0 5px;" />
+
+					</h:panelGrid>
+				</h:form>
+
+			</p:panel>
+		</div>
+	</div>
+
+</body>
 </html>

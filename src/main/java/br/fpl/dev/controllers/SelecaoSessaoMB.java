@@ -10,7 +10,9 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
 
+import br.fpl.dev.entities.Filme;
 import br.fpl.dev.entities.Sessao;
+import br.fpl.dev.services.FilmeServiceIF;
 import br.fpl.dev.services.SessaoServiceIF;
 
 @ManagedBean
@@ -23,7 +25,10 @@ public class SelecaoSessaoMB implements Serializable {
 	private static final long serialVersionUID = -1894950326936854406L;
 	
 	@Inject
-	private SessaoServiceIF service;
+	private SessaoServiceIF sessaoService;
+	
+	@Inject
+	private FilmeServiceIF filmeService;
 	
 	// Busca o valor do filme selecionado do outro MB
 	@ManagedProperty(value="#{selecaoFilmeMB}")
@@ -33,6 +38,8 @@ public class SelecaoSessaoMB implements Serializable {
 	
 	private long sessaoSelecionada;
 	
+	private Filme filmeSelecionado;
+	
 	private SimpleDateFormat sdf;
 	
 	@PostConstruct
@@ -40,11 +47,27 @@ public class SelecaoSessaoMB implements Serializable {
 		sdf = new SimpleDateFormat("HH:mm"); // converte HH:mm:ss em HH:mm
 	}
 	
+	
+	/**
+	 * Método para exibir os resultados do MB
+	 */
+	public void gerarSessao(){
+		buscarFilmeSelecionado();
+		buscarSessoes();
+	}
+	
+	/**
+	 * Método para buscar o filme pelo ID selecionado
+	 */
+	public void buscarFilmeSelecionado(){
+		filmeSelecionado = filmeService.buscarFilmePorId(selecaoFilme.getFilmeSelecionado());
+	}
+	
 	/**
 	 * Verifica quais as sessões para o filme selecionado
 	 */
 	public void buscarSessoes(){
-		sessoes = service.buscarSessaoPorFilme(selecaoFilme.getFilmeSelecionado());
+		sessoes = sessaoService.buscarSessoesPorFilme(selecaoFilme.getFilmeSelecionado());
 		
 		/*
 		 * SessaoSelecionada inicia com o ID da primeira sessão
@@ -95,6 +118,8 @@ public class SelecaoSessaoMB implements Serializable {
 	public void setSessaoSelecionada(long sessaoSelecionada) {
 		this.sessaoSelecionada = sessaoSelecionada;
 	}
+	
+	
 
 	public SimpleDateFormat getSdf() {
 		return sdf;
@@ -102,6 +127,14 @@ public class SelecaoSessaoMB implements Serializable {
 
 	public void setSdf(SimpleDateFormat sdf) {
 		this.sdf = sdf;
+	}
+
+	public Filme getFilmeSelecionado() {
+		return filmeSelecionado;
+	}
+
+	public void setFilmeSelecionado(Filme filmeSelecionado) {
+		this.filmeSelecionado = filmeSelecionado;
 	}
 	
 }

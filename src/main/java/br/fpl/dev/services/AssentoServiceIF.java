@@ -7,4 +7,6 @@ import br.fpl.dev.entities.Assento;
 public interface AssentoServiceIF {
 	
 	public List<Assento> buscarAssentos();
+	
+	public Assento buscarAssentoPorId(long id);
 }

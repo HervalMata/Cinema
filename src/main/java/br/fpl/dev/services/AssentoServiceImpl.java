@@ -18,5 +18,9 @@ public class AssentoServiceImpl implements AssentoServiceIF{
 	public List<Assento> buscarAssentos() {
 		return dao.buscarTodos();
 	}
+
+	public Assento buscarAssentoPorId(long id) {
+		return dao.buscarPorId(id);
+	}
 	
 }

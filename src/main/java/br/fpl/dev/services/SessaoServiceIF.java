@@ -6,7 +6,7 @@ import br.fpl.dev.entities.Sessao;
 
 public interface SessaoServiceIF {
 	
-	public List<Sessao> buscarSessaoPorFilme(String titulo);
+	public List<Sessao> buscarSessoesPorFilme(long id);
 	
 	public Sessao buscarSessaoPorId(long id);
 	

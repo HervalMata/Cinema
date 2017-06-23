@@ -15,14 +15,14 @@ public class SessaoServiceImpl implements SessaoServiceIF {
 	@Inject
 	private SessaoDAO dao;
 	
-	public List<Sessao> buscarSessaoPorFilme(String titulo) {
+	public List<Sessao> buscarSessoesPorFilme(long id) {
 		
 		List<Sessao> todasSessoes = dao.buscarTodos();
 		List<Sessao> sessoesFilme = new ArrayList<>();
 		
 		for (Sessao s : todasSessoes){
 			
-			if (s.getFilme().getTitulo().equals(titulo)){
+			if (s.getFilme().getId() == id){
 				
 				sessoesFilme.add(s);
 			}

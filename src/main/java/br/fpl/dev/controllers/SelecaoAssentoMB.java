@@ -53,7 +53,7 @@ public class SelecaoAssentoMB implements Serializable {
 	/**
 	 * Método para exibir os resultados do MB
 	 */
-	public void exibirResultados(){
+	public void gerarAssento(){
 		buscarSessaoSelecionada();
 		buscarAssentos();
 		definirAssentosOcupados();
@@ -63,6 +63,7 @@ public class SelecaoAssentoMB implements Serializable {
 	 * Método para buscar sessao pelo ID da sessão selecionada
 	 */
 	public void buscarSessaoSelecionada() {
+		
 		sessaoSelecionada = sessaoService.buscarSessaoPorId(selecaoSessao.getSessaoSelecionada());
 	}
 	

@@ -2,6 +2,7 @@ package br.fpl.dev.entities;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -32,6 +33,9 @@ public class Reserva implements Serializable {
 	@JoinColumn(name="assento")
 	private Assento assento;
 
+	@Column(nullable=false, unique=true)
+	private String codigo;
+	
 	// Getters and Setters
 	public long getId() {
 		return id;
@@ -52,6 +56,12 @@ public class Reserva implements Serializable {
 	}
 	public void setAssento(Assento assento) {
 		this.assento = assento;
+	}
+	public String getCodigo() {
+		return codigo;
+	}
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
 	}
 	
 }

@@ -27,14 +27,13 @@ public class SelecaoFilmeMB implements Serializable {
 
 	private List<Filme> filmes;
 
-	private String filmeSelecionado;
+	private long filmeSelecionado;
 
 	/**
 	 * Inicia a lista com todos os filmes do banco
 	 */
 	@PostConstruct
 	public void init() {
-		filmeSelecionado = new String();
 		filmes = service.buscarTodosFilmes();
 	}
 
@@ -55,20 +54,19 @@ public class SelecaoFilmeMB implements Serializable {
 	}
 	/**
 	 * exibe a mensagem do filme selecionado
-	 * 
-	 * @param actionEvent
 	 */
 	public void exibirMensagem() {
 		FacesContext context = FacesContext.getCurrentInstance();
-
-		context.addMessage(null, new FacesMessage("Filme selecionado: ", filmeSelecionado));
+		
+		Filme filme = service.buscarFilmePorId(filmeSelecionado);
+		context.addMessage(null, new FacesMessage("Filme selecionado: ", filme.getTitulo()));
 	}
 
-	public String getFilmeSelecionado() {
+	public long getFilmeSelecionado() {
 		return filmeSelecionado;
 	}
 
-	public void setFilmeSelecionado(String filmeSelecionado) {
+	public void setFilmeSelecionado(long filmeSelecionado) {
 		this.filmeSelecionado = filmeSelecionado;
 	}
 

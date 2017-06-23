@@ -17,4 +17,9 @@ public class FilmeServiceImpl implements FilmeServiceIF{
 	public List<Filme> buscarTodosFilmes() {
 		return dao.buscarTodos();
 	}
+
+	public Filme buscarFilmePorId(long id) {
+		return dao.buscarPorId(id);
+	}
+	
 }

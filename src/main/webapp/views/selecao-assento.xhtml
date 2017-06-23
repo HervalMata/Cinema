@@ -34,7 +34,7 @@ body .ui-buttonset .ui-button {
 					<h:panelGrid columns="2" width="98%">
 
 						<p:panel header="Filme" style="width:320px; text-align: center">
-							<h:outputText value="#{selecaoFilmeMB.filmeSelecionado}"
+							<h:outputText value="#{selecaoAssentoMB.selecaoSessao.filmeSelecionado.titulo}"
 								style="font-size: 16px;" />
 						</p:panel>
 						<p:panel header="Sessão" style="width:170px; text-align: center">
@@ -63,7 +63,7 @@ body .ui-buttonset .ui-button {
 							value="Voltar" styleClass="ui-priority-primary"
 							icon="ui-icon-arrowthick-1-w" style="margin: 20px 0 0 5px;" />
 
-						<p:commandButton action="#{selecaoAssentoMB.proximo()}"
+						<p:commandButton actionListener="#{selecaoReservaMB.gerarReserva()}" action="#{selecaoAssentoMB.proximo()}"
 							value="Próximo" styleClass="ui-priority-primary"
 							icon="ui-icon-arrowthick-1-e"
 							style="margin: 20px 2px 0 0; float: right;" />

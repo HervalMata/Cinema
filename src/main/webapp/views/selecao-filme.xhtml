@@ -12,8 +12,6 @@
 .ui-steps .ui-steps-item {
 	width: 25%;
 }
-
-
 </style>
 
 </h:head>
@@ -64,7 +62,7 @@
 											<p:tab title="sinopse">
 
 												<h:panelGrid
-													style="font-size: 12px; margin: -10px 0 0 -25px; width:200px;">
+													style="font-size: 14px; margin: -10px 0 0 -25px; width:200px;">
 													<h:outputText value="#{filme.sinopse}" />
 												</h:panelGrid>
 
@@ -86,7 +84,7 @@
 										icon="ui-icon-check" update="growl"
 										style="font-size: 14px ;width: 100%; padding: 4px;">
 
-										<f:setPropertyActionListener value="#{filme.titulo}"
+										<f:setPropertyActionListener value="#{filme.id}"
 											target="#{selecaoFilmeMB.filmeSelecionado}" />
 
 									</p:commandButton>
@@ -105,7 +103,7 @@
 							value="Voltar" styleClass="ui-priority-primary"
 							icon="ui-icon-arrowthick-1-w" style="margin: 20px 0 0 5px;" />
 
-						<p:commandButton actionListener="#{selecaoSessaoMB.buscarSessoes()}" action="#{selecaoFilmeMB.proximo()}"
+						<p:commandButton actionListener="#{selecaoSessaoMB.gerarSessao()}" action="#{selecaoFilmeMB.proximo()}"
 							value="Próximo" styleClass="ui-priority-primary"
 							icon="ui-icon-arrowthick-1-e"
 							style="margin: 20px 2px 0 0; float: right;" />
