@@ -69,7 +69,13 @@ public class buscaReservaMB implements Serializable {
 	 * @return página inicial
 	 */
 	public String voltar() {
+		
+		zerarSessao();
 		return "/index.jsf?faces-redirect=true";
+	}
+	
+	public void zerarSessao(){
+		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 	}
 	
 	public String voltarPesquisa(){

@@ -50,6 +50,13 @@ public class SelecaoFilmeMB implements Serializable {
 	 * @return próx página
 	 */
 	public String proximo(){
+		
+		if (filmeSelecionado == 0){
+			FacesContext context = FacesContext.getCurrentInstance();
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Escolha um filme!", "É necessário escolher um filme para prosseguir."));
+			return null;
+		}
+		
 		return "selecao-sessao.jsf?faces-redirect=true";
 	}
 	/**

@@ -21,7 +21,7 @@
 	<div class="ui-g">
 
 		<div class="ui-g-5" align="center" style="margin: 0 auto;">
-
+		
 			<p:panel>
 
 				<p:steps style="margin: 10px;">
@@ -96,7 +96,7 @@
 						</p:panelGrid>
 
 					</p:carousel>
-
+					<p:growl id="growl" showDetail="true" life="3000" />
 					<h:panelGrid columns="2" width="97%">
 
 						<p:commandButton action="#{selecaoFilmeMB.voltar()}"
@@ -105,7 +105,7 @@
 
 						<p:commandButton actionListener="#{selecaoSessaoMB.gerarSessao()}" action="#{selecaoFilmeMB.proximo()}"
 							value="Próximo" styleClass="ui-priority-primary"
-							icon="ui-icon-arrowthick-1-e"
+							icon="ui-icon-arrowthick-1-e" update="growl"
 							style="margin: 20px 2px 0 0; float: right;" />
 
 					</h:panelGrid>

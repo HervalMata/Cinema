@@ -5,9 +5,11 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
 import br.fpl.dev.entities.Filme;
@@ -68,15 +70,7 @@ public class SelecaoSessaoMB implements Serializable {
 	 */
 	public void buscarSessoes(){
 		sessoes = sessaoService.buscarSessoesPorFilme(selecaoFilme.getFilmeSelecionado());
-		
-		/*
-		 * SessaoSelecionada inicia com o ID da primeira sessão
-		 * valor default para a tag <h:selectOneRadio>
-		 */
-		for (Sessao s : sessoes){
-			sessaoSelecionada = s.getId();
-			break;
-		}
+
 	}
 	
 	/**
@@ -92,6 +86,14 @@ public class SelecaoSessaoMB implements Serializable {
 	 * @return próxima página
 	 */
 	public String proximo(){
+		
+		if (sessaoSelecionada == 0){
+			
+			FacesContext context = FacesContext.getCurrentInstance();
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Escolha uma sessão!","É necessário escolher uma sessão para prosseguir."));
+			return null;
+		}
+		
 		return "selecao-assento.jsf?faces-redirect=true";
 	}
 	

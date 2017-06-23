@@ -33,7 +33,6 @@ public class resultadoMB implements Serializable{
 	@PostConstruct
 	public void init(){
 		buscarDadosDaReserva();
-		zerarSessao();
 	}
 	
 	public void zerarSessao(){

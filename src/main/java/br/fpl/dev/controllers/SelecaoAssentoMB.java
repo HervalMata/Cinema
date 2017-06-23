@@ -5,9 +5,11 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
 import br.fpl.dev.entities.Assento;
@@ -109,6 +111,14 @@ public class SelecaoAssentoMB implements Serializable {
 	 * @return próxima página
 	 */
 	public String proximo(){
+		
+		if (assentoSelecionado == 0){
+			
+			FacesContext context = FacesContext.getCurrentInstance();
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Escolha um assento!", "É necessário escolher um assento para prosseguir."));
+			return null;
+		}
+		
 		return "selecao-reserva.jsf?faces-redirect=true";
 	}
 	

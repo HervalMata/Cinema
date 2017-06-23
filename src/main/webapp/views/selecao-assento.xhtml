@@ -57,6 +57,7 @@ body .ui-buttonset .ui-button {
 						</h:panelGrid>
 
 					</p:panel>
+					<p:growl id="growl" showDetail="true" life="3000"/>
 					<h:panelGrid columns="2" width="97%">
 
 						<p:commandButton action="#{selecaoAssentoMB.voltar()}"
@@ -65,7 +66,7 @@ body .ui-buttonset .ui-button {
 
 						<p:commandButton actionListener="#{selecaoReservaMB.gerarReserva()}" action="#{selecaoAssentoMB.proximo()}"
 							value="Próximo" styleClass="ui-priority-primary"
-							icon="ui-icon-arrowthick-1-e"
+							icon="ui-icon-arrowthick-1-e" update="growl"
 							style="margin: 20px 2px 0 0; float: right;" />
 
 					</h:panelGrid>
