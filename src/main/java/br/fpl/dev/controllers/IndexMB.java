@@ -16,4 +16,8 @@ public class IndexMB implements Serializable{
 	public String fazerReserva(){
 		return "/views/selecao-filme.jsf?faces-redirect=true";
 	}
+	
+	public String verReserva(){
+		return "/views/busca-reserva.jsf?faces-redirect=true";
+	}
 }

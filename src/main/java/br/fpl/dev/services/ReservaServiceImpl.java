@@ -72,4 +72,21 @@ public class ReservaServiceImpl implements ReservaServiceIF {
 		return codigo;
 	}
 
+	public Reserva buscarReservaPorCodigo(String codigo) {
+		
+		List<Reserva> todasReservas = dao.buscarTodos();
+		
+		for (Reserva r : todasReservas){
+			
+			if(r.getCodigo().equals(codigo)){
+				
+				return r;
+			}
+		}
+		
+		return null;
+	}
+	
+	
+
 }

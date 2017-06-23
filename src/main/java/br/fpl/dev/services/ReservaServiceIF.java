@@ -11,4 +11,6 @@ public interface ReservaServiceIF {
 	public void salvarReserva(Reserva reserva);
 	
 	public String gerarCodigo();
+	
+	public Reserva buscarReservaPorCodigo(String codigo);
 }

@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<h:head>
+	<title>Busca de Reserva | Cinema</title>
+	<style>
+body {
+	margin-top: 10%;
+}
+</style>
+</h:head>
+<body>
+	<div class="ui-g">
+		<div class="ui-g-4" align="center" style="margin: 0 auto;">
+			<p:messages id="messages" autoUpdate="true" closable="true"/>
+			<p:panel>
+
+				<h:form>
+	
+					<p:panel header="Cinema">
+						<h:panelGrid columns="1" width="100%;">
+							<h:panelGrid columns="1"
+								style="margin: 20px 0 30px 0; text-align: center;" width="100%">
+								<p:outputLabel value="Digite o código da reserva:" for="codigo" style="font-weight: bold;"/>
+								<p:inputText id="codigo" value="#{buscaReservaMB.codigo}" style="text-align: center; margin-top: 10px;"/>
+							</h:panelGrid>
+
+							<p:commandButton
+								action="#{buscaReservaMB.exibirResultado()}" value="Procurar"
+								style="padding: 5px; width:100%;"
+								icon="ui-icon-search" />
+						</h:panelGrid>
+
+						
+					</p:panel>
+					<h:panelGrid width="100%">
+					<p:commandButton action="#{buscaReservaMB.voltar()}"
+							value="Voltar" styleClass="ui-priority-primary"
+							icon="ui-icon-arrowthick-1-w" style="margin: 10px 0 0 0; float:left"/>
+					</h:panelGrid>
+				</h:form>
+
+			</p:panel>
+		</div>
+	</div>
+</body>
+</html>
+
