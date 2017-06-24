@@ -36,7 +36,10 @@ public class BuscaReservaMB implements Serializable {
 		sdf = new SimpleDateFormat("HH:mm"); // converte HH:mm:ss em HH:mm
 	}
 
-
+	/**
+	 * Verifica se encontrou a reserva
+	 * @return pagina de erro ou exibe a reserva
+	 */
 	public String exibirResultado() {
 		
 		buscarReserva();
@@ -52,14 +55,19 @@ public class BuscaReservaMB implements Serializable {
 		
 		
 	}
-
+	
+	/**
+	 * busca a reserva no banco que tenha o mesmo código que foi passado
+	 */
 	public void buscarReserva() {
 		reserva = service.buscarReservaPorCodigo(codigo);
 		resetarCampo();
 	}
 	
 	
-	
+	/**
+	 * reseta o campo de pesquisa
+	 */
 	public void resetarCampo() {
 		codigo = new String();
 	}

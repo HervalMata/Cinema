@@ -15,6 +15,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.fpl.dev.controllers.SelecaoReservaMB;
 
+/**
+ * Verifica se o assento ja foi selecionado
+ * caso ja tenha sido, permite que entre na seleção de reserva
+ * caso não, retorna para a página inicial
+ * @author Lucas P. França
+ *
+ */
 @WebFilter(urlPatterns="/views/selecao-reserva.jsf")
 public class ReservaFiltro implements Filter {
 	

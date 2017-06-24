@@ -15,6 +15,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.fpl.dev.controllers.SelecaoSessaoMB;
 
+/**
+ * Verifica se o filme ja foi selecionado
+ * caso ja tenha sido, permite que entre na seleção de sessão
+ * caso não, retorna para a página inicial
+ * @author Lucas P. França
+ *
+ */
 @WebFilter(urlPatterns="/views/selecao-sessao.jsf")
 public class SessaoFiltro implements Filter {
 	

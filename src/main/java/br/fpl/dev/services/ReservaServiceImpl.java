@@ -41,7 +41,7 @@ public class ReservaServiceImpl implements ReservaServiceIF {
 
 		java.util.Random random = new java.util.Random();
 
-		// Opções alfanumericas para compor o codigo
+		// Opções alfanumericas para compor o código
 		char[] alfanumerico = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q',
 				'r', 's', 't', 'u', 'v', 'x', 'w', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L',
 				'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '1', '2', '3', '4', '5', '6', '7',
@@ -49,7 +49,8 @@ public class ReservaServiceImpl implements ReservaServiceIF {
 
 		StringBuilder sequencia = new StringBuilder();
 		String codigo = new String();
-
+		
+		// Monta um código de 10 digitos com os valores acima
 		for (int i = 0; i < 10; i++) {
 			sequencia.append(alfanumerico[random.nextInt(alfanumerico.length)]);
 		}
@@ -58,7 +59,8 @@ public class ReservaServiceImpl implements ReservaServiceIF {
 
 		// Entra na lista de reservas para ver os códigos existentes
 		for (Reserva r : todasReservas) {
-
+			
+			// Se o codigo gerado já existir no banco, gera um novo
 			while(r.getCodigo().equals(codigo)){
 				
 				for (int i = 0; i <= 10; i++) {

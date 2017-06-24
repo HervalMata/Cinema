@@ -106,7 +106,7 @@ public class SelecaoAssentoMB implements Serializable {
 	}
 	
 	/**
-	 * 
+	 * Verifica se o acento foi selecionado, caso não tenha sido exibe a mensagem
 	 * @return próxima página
 	 */
 	public String proximo(){
@@ -160,5 +160,7 @@ public class SelecaoAssentoMB implements Serializable {
 	public void setSelecaoSessao(SelecaoSessaoMB selecaoSessao) {
 		this.selecaoSessao = selecaoSessao;
 	}
+	
+	
 
 }

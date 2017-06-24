@@ -24,7 +24,7 @@ public abstract class BaseDAO<T> {
 	 * Método para salvar um objeto no banco
 	 * @param tipo
 	 */
-	public void salvar(T tipo){ // INSERT
+	public void salvar(T tipo){ // CREATE
 		try{
 			em.persist(tipo);
 		} catch (Exception e){
@@ -37,7 +37,8 @@ public abstract class BaseDAO<T> {
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
-	public List<T> buscarTodos(){ // SELECT
+	public List<T> buscarTodos(){ // READ
+		
 		StringBuilder sql = new StringBuilder();
 		sql.append("FROM ").append(tipo.getSimpleName());
 		

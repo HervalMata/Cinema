@@ -15,6 +15,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.fpl.dev.controllers.ResultadoMB;
 
+/**
+ * Após a exibição da tela de confirmação
+ * é necessário clicar no botão "voltar ao início" para encerra a sessão
+ * caso tente voltar pela url, sem ter encerrado a sessão
+ * será redirecionado para a mesma tela até que finalize.
+ * 
+ * @author Lucas P. frança
+ *
+ */
 @WebFilter(urlPatterns={"/",
 						"/index.jsf",
 						"/views/selecao-filme.jsf", 

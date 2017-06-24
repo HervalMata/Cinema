@@ -15,6 +15,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.fpl.dev.controllers.ResultadoMB;
 
+/**
+ * Só entre na tela de exibição do resultado de confirmação
+ * caso a reseva já tenha sido finalizada
+ * @author Lucas P. frança
+ *
+ */
 @WebFilter(urlPatterns="/views/resultado/confirmacao.jsf")
 public class ConfirmacaoFiltro implements Filter{
 	

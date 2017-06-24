@@ -69,6 +69,15 @@ public class SelecaoReservaMB implements Serializable {
 		codigo = reservaService.gerarCodigo();
 	}
 	
+	
+	/**
+	 * Gera o código da reserva
+	 * passa os valores para o objeto reserva
+	 * insere no banco
+	 * passa o valor do código para outro MB
+	 * finaliza a reserva
+	 * @return pagina de confirmação
+	 */
 	public String confirmarReserva(){
 		
 		gerarCodigoParaReserva();
@@ -95,14 +104,6 @@ public class SelecaoReservaMB implements Serializable {
 		return "selecao-assento.jsf?faces-redirect=true";
 	}
 	
-
-	public SelecaoAssentoMB getSelecaoAssento() {
-		return selecaoAssento;
-	}
-
-	public void setSelecaoAssento(SelecaoAssentoMB selecaoAssento) {
-		this.selecaoAssento = selecaoAssento;
-	}
 
 	public Sessao getSessao() {
 		return sessao;

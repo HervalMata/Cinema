@@ -80,7 +80,7 @@ public class SelecaoSessaoMB implements Serializable {
 	}
 	
 	/**
-	 * 
+	 *  Verifica se a sessão foi selecionado, caso não tenha sido exibe a mensagem
 	 * @return próxima página
 	 */
 	public String proximo(){

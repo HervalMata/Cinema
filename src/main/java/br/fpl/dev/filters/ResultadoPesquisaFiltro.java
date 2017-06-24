@@ -15,6 +15,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.fpl.dev.controllers.BuscaReservaMB;
 
+/**
+ * Só entre na tela de exibição do resultado de pesquisa
+ * caso tenha feito uma busca
+ * caso esteja entrando pela url sem ter realizado nenhuma pesquisa, volta para página inicial
+ * @author Lucas P. frança
+ *
+ */
 @WebFilter(urlPatterns = "/views/resultado/resultado-pesquisa.jsf")
 public class ResultadoPesquisaFiltro implements Filter {
 

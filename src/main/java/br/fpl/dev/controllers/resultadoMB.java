@@ -27,14 +27,24 @@ public class ResultadoMB implements Serializable{
 		
 	}
 	
+	/**
+	 * sinaliza que a reserva foi finalizada passando o valor de true para a variavel
+	 */
 	public void finalizarReserva(){
 		this.finalizado = true;
 	}
 	
+	/**
+	 * encerra a sessão
+	 */
 	public void zerarSessao(){
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 	}
 	
+	/**
+	 * encerra a sessão
+	 * @return pagina inicial
+	 */
 	public String voltar(){
 		zerarSessao();
 		return "/index.jsf?faces-redirect=true";

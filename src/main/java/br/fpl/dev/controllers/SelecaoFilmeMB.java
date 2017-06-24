@@ -46,7 +46,7 @@ public class SelecaoFilmeMB implements Serializable {
 	}
 	
 	/**
-	 * 
+	 *  Verifica se o filme foi selecionado, caso não tenha sido exibe a mensagem
 	 * @return próx página
 	 */
 	public String proximo(){

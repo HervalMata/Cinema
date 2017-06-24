@@ -15,6 +15,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.fpl.dev.controllers.SelecaoAssentoMB;
 
+/**
+ * Verifica se a sessão ja foi selecionada
+ * caso ja tenha sido, permite que entre na seleção de assento
+ * caso não, retorna para a página inicial
+ * @author Lucas P. França
+ *
+ */
+
 @WebFilter(urlPatterns="/views/selecao-assento.jsf")
 public class AssentoFiltro implements Filter{
 	
