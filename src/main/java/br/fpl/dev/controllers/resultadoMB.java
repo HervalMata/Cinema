@@ -3,16 +3,14 @@ package br.fpl.dev.controllers;
 import java.io.Serializable;
 
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.SessionScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.inject.Named;
 
-import br.fpl.dev.entities.Reserva;
 
-@ManagedBean
+@Named
 @SessionScoped
-public class resultadoMB implements Serializable{
+public class ResultadoMB implements Serializable{
 
 	
 	/**
@@ -20,19 +18,17 @@ public class resultadoMB implements Serializable{
 	 */
 	private static final long serialVersionUID = 606776800474065113L;
 	
-	@ManagedProperty(value = "#{selecaoReservaMB}")
-	private SelecaoReservaMB selecaoReserva;
+	private String codigo;
 	
-	private Reserva reserva;
-	
-	
-	public void buscarDadosDaReserva(){
-		reserva = selecaoReserva.getReserva();
-	}
+	private boolean finalizado;
 	
 	@PostConstruct
 	public void init(){
-		buscarDadosDaReserva();
+		
+	}
+	
+	public void finalizarReserva(){
+		this.finalizado = true;
 	}
 	
 	public void zerarSessao(){
@@ -40,27 +36,25 @@ public class resultadoMB implements Serializable{
 	}
 	
 	public String voltar(){
-		
 		zerarSessao();
 		return "/index.jsf?faces-redirect=true";
 	}
 	
-	
-	public Reserva getReserva() {
-		return reserva;
+
+	public String getCodigo() {
+		return codigo;
 	}
 
-	public void setReserva(Reserva reserva) {
-		this.reserva = reserva;
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
 	}
 
-	public SelecaoReservaMB getSelecaoReserva() {
-		return selecaoReserva;
+	public boolean isFinalizado() {
+		return finalizado;
 	}
 
-	public void setSelecaoReserva(SelecaoReservaMB selecaoReserva) {
-		this.selecaoReserva = selecaoReserva;
+	public void setFinalizado(boolean finalizado) {
+		this.finalizado = finalizado;
 	}
-
 	
 }

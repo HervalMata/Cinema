@@ -5,19 +5,18 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
+import javax.inject.Named;
 
 import br.fpl.dev.entities.Filme;
 import br.fpl.dev.entities.Sessao;
 import br.fpl.dev.services.FilmeServiceIF;
 import br.fpl.dev.services.SessaoServiceIF;
 
-@ManagedBean
+@Named
 @SessionScoped
 public class SelecaoSessaoMB implements Serializable {
 
@@ -32,8 +31,7 @@ public class SelecaoSessaoMB implements Serializable {
 	@Inject
 	private FilmeServiceIF filmeService;
 	
-	// Busca o valor do filme selecionado do outro MB
-	@ManagedProperty(value="#{selecaoFilmeMB}")
+	@Inject
 	private SelecaoFilmeMB selecaoFilme;
 	
 	private List<Sessao> sessoes;
@@ -105,14 +103,6 @@ public class SelecaoSessaoMB implements Serializable {
 		this.sessoes = sessoes;
 	}
 
-	public SelecaoFilmeMB getSelecaoFilme() {
-		return selecaoFilme;
-	}
-
-	public void setSelecaoFilme(SelecaoFilmeMB selecaoFilme) {
-		this.selecaoFilme = selecaoFilme;
-	}
-
 	public long getSessaoSelecionada() {
 		return sessaoSelecionada;
 	}
@@ -121,8 +111,6 @@ public class SelecaoSessaoMB implements Serializable {
 		this.sessaoSelecionada = sessaoSelecionada;
 	}
 	
-	
-
 	public SimpleDateFormat getSdf() {
 		return sdf;
 	}

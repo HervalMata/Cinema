@@ -5,12 +5,11 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
+import javax.inject.Named;
 
 import br.fpl.dev.entities.Assento;
 import br.fpl.dev.entities.Reserva;
@@ -19,7 +18,7 @@ import br.fpl.dev.services.AssentoServiceIF;
 import br.fpl.dev.services.ReservaServiceIF;
 import br.fpl.dev.services.SessaoServiceIF;
 
-@ManagedBean
+@Named
 @SessionScoped
 public class SelecaoAssentoMB implements Serializable {
 	/**
@@ -36,7 +35,7 @@ public class SelecaoAssentoMB implements Serializable {
 	@Inject
 	private ReservaServiceIF reservaService;
 	
-	@ManagedProperty(value = "#{selecaoSessaoMB}")
+	@Inject
 	private SelecaoSessaoMB selecaoSessao;
 
 	private List<Assento> assentos;

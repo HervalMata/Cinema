@@ -4,10 +4,9 @@ import java.io.Serializable;
 import java.text.SimpleDateFormat;
 
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.SessionScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
 
 import br.fpl.dev.entities.Assento;
 import br.fpl.dev.entities.Reserva;
@@ -15,7 +14,7 @@ import br.fpl.dev.entities.Sessao;
 import br.fpl.dev.services.AssentoServiceIF;
 import br.fpl.dev.services.ReservaServiceIF;
 
-@ManagedBean
+@Named
 @SessionScoped
 public class SelecaoReservaMB implements Serializable {
 
@@ -30,8 +29,11 @@ public class SelecaoReservaMB implements Serializable {
 	@Inject
 	private ReservaServiceIF reservaService;
 	
-	@ManagedProperty(value = "#{selecaoAssentoMB}")
+	@Inject
 	private SelecaoAssentoMB selecaoAssento;
+	
+	@Inject
+	private ResultadoMB resultado;
 	
 	private Sessao sessao;
 	
@@ -78,6 +80,9 @@ public class SelecaoReservaMB implements Serializable {
 		reserva.setCodigo(codigo);
 		
 		reservaService.salvarReserva(reserva);
+		
+		resultado.setCodigo(codigo);
+		resultado.finalizarReserva();
 		
 		return "resultado/confirmacao.jsf?faces-redirect=true";
 	}

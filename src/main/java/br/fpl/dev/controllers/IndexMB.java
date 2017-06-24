@@ -2,9 +2,11 @@ package br.fpl.dev.controllers;
 
 import java.io.Serializable;
 
-import javax.faces.bean.ManagedBean;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Named;
 
-@ManagedBean
+@Named
+@RequestScoped
 public class IndexMB implements Serializable{
 
 	/**

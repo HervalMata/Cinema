@@ -4,18 +4,18 @@ import java.io.Serializable;
 import java.text.SimpleDateFormat;
 
 import javax.annotation.PostConstruct;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
+import javax.inject.Named;
 
 import br.fpl.dev.entities.Reserva;
 import br.fpl.dev.services.ReservaServiceIF;
 
-@ManagedBean
+@Named
 @SessionScoped
-public class buscaReservaMB implements Serializable {
+public class BuscaReservaMB implements Serializable {
 
 	/**
 	 * 
@@ -79,6 +79,7 @@ public class buscaReservaMB implements Serializable {
 	}
 	
 	public String voltarPesquisa(){
+		zerarSessao();
 		return "/views/busca-reserva.jsf?faces-redirect=true";
 	}
 	public String getCodigo() {
