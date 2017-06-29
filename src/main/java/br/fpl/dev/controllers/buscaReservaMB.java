@@ -1,9 +1,7 @@
 package br.fpl.dev.controllers;
 
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
 
-import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -28,13 +26,6 @@ public class BuscaReservaMB implements Serializable {
 	private String codigo;
 
 	private Reserva reserva;
-
-	private SimpleDateFormat sdf;
-
-	@PostConstruct
-	public void init() {
-		sdf = new SimpleDateFormat("HH:mm"); // converte HH:mm:ss em HH:mm
-	}
 
 	/**
 	 * Verifica se encontrou a reserva
@@ -105,17 +96,5 @@ public class BuscaReservaMB implements Serializable {
 	public void setReserva(Reserva reserva) {
 		this.reserva = reserva;
 	}
-
-
-	public SimpleDateFormat getSdf() {
-		return sdf;
-	}
-
-
-	public void setSdf(SimpleDateFormat sdf) {
-		this.sdf = sdf;
-	}
-	
-	
 
 }

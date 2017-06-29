@@ -3,7 +3,8 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions">
 
 
 <h:head>
@@ -33,7 +34,7 @@ body {
 							<p:outputLabel value="#{buscaReservaMB.reserva.sessao.filme.titulo}" />
 							<p:outputLabel value="Horario:" style="font-weight: bold" />
 							<p:outputLabel
-								value="#{buscaReservaMB.sdf.format(buscaReservaMB.reserva.sessao.horario.hora)}h" />
+								value="#{of:formatDate(buscaReservaMB.reserva.sessao.horario.hora, 'HH:mm')}h" />
 							<p:outputLabel value="Sala:" style="font-weight: bold" />
 							<p:outputLabel value="#{buscaReservaMB.reserva.sessao.sala.numero}" />
 							<p:outputLabel value="Assento:" style="font-weight: bold" />

@@ -3,7 +3,8 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions">
 
 <h:head>
 	<title>Seleção de Sessão | Cinema</title>
@@ -41,9 +42,10 @@
 								
 								<f:selectItems value="${selecaoSessaoMB.sessoes}" var="sessao" 
 								itemLabel="Sessão: #{selecaoSessaoMB.sessoes.indexOf(sessao) + 1} - 
-													Horario: #{selecaoSessaoMB.sdf.format(sessao.horario.hora)}h -
+													Horario: #{of:formatDate(sessao.horario.hora, 'HH:mm')}h -
 													Sala: #{sessao.sala.numero}."
 								itemValue="#{sessao.id}">
+								
 								
 								</f:selectItems>
 								

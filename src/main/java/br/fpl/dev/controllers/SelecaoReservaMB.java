@@ -1,9 +1,7 @@
 package br.fpl.dev.controllers;
 
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
 
-import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -42,13 +40,6 @@ public class SelecaoReservaMB implements Serializable {
 	private Reserva reserva;
 	
 	private String codigo;
-	
-	private SimpleDateFormat sdf;
-	
-	@PostConstruct
-	public void init(){
-		sdf = new SimpleDateFormat("HH:mm"); // converte HH:mm:ss em HH:mm
-	}
 	
 	/**
 	 * Gera a reserva pela Sessão e o assento selecionado
@@ -127,14 +118,6 @@ public class SelecaoReservaMB implements Serializable {
 
 	public void setReserva(Reserva reserva) {
 		this.reserva = reserva;
-	}
-
-	public SimpleDateFormat getSdf() {
-		return sdf;
-	}
-
-	public void setSdf(SimpleDateFormat sdf) {
-		this.sdf = sdf;
 	}
 
 	public String getCodigo() {

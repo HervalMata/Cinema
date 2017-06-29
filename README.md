@@ -3,13 +3,13 @@
 ## Fazer reserva:
 
 * Selecionar filme
-* Selecionar Sess„o
+* Selecionar Sess√£o
 * Selecionar Assento
 * Gerar bilhete de reserva
 
 ## Ver reserva:
 
-* Buscar reserva por cÛdigo do bilhete
+* Buscar reserva por c√≥digo do bilhete
 
 # tecnologias utilizadas:
 
@@ -17,8 +17,9 @@
 
 * JSF 2.2
 * PRIMEFACES 6.1
+* OMNIFACES 2.6
 * HIBERNATE 5
 * JPA 2.1
 * MAVEN 3.3.9
-* Servidor de aplicaÁ„o: WILDFLY 10.1.0
+* Servidor de aplica√ß√£o: WILDFLY 10.1.0
 * Banco de dados: MYSQL( Connector/J 5.1.42 )

@@ -2,7 +2,6 @@ package br.fpl.dev.controllers;
 
 import java.io.Serializable;
 
-import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
@@ -21,11 +20,6 @@ public class ResultadoMB implements Serializable{
 	private String codigo;
 	
 	private boolean finalizado;
-	
-	@PostConstruct
-	public void init(){
-		
-	}
 	
 	/**
 	 * sinaliza que a reserva foi finalizada passando o valor de true para a variavel

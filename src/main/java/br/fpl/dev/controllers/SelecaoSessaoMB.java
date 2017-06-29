@@ -1,10 +1,8 @@
 package br.fpl.dev.controllers;
 
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -39,14 +37,6 @@ public class SelecaoSessaoMB implements Serializable {
 	private long sessaoSelecionada;
 	
 	private Filme filmeSelecionado;
-	
-	private SimpleDateFormat sdf;
-	
-	@PostConstruct
-	public void init(){
-		sdf = new SimpleDateFormat("HH:mm"); // converte HH:mm:ss em HH:mm
-	}
-	
 	
 	/**
 	 * Método para exibir os resultados do MB
@@ -109,14 +99,6 @@ public class SelecaoSessaoMB implements Serializable {
 
 	public void setSessaoSelecionada(long sessaoSelecionada) {
 		this.sessaoSelecionada = sessaoSelecionada;
-	}
-	
-	public SimpleDateFormat getSdf() {
-		return sdf;
-	}
-
-	public void setSdf(SimpleDateFormat sdf) {
-		this.sdf = sdf;
 	}
 
 	public Filme getFilmeSelecionado() {

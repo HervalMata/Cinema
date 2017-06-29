@@ -3,7 +3,8 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions">
 
 <h:head>
 	<title>Seleção de Assento | Cinema</title>
@@ -40,7 +41,7 @@ body .ui-buttonset .ui-button {
 						<p:panel header="Sessão" style="width:170px; text-align: center">
 
 							<h:outputText
-								value="#{selecaoAssentoMB.sdf.format(selecaoAssentoMB.sessaoSelecionada.horario.hora)}h - 
+								value="#{of:formatDate(selecaoAssentoMB.sessaoSelecionada.horario.hora, 'HH:mm')}h - 
 											Sala: #{selecaoAssentoMB.sessaoSelecionada.sala.numero} " />
 						</p:panel>
 
