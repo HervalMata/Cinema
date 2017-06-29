@@ -20,6 +20,6 @@
 * OMNIFACES 2.6
 * HIBERNATE 5
 * JPA 2.1
-* MAVEN 3.3.9
+* MAVEN 3.3
 * Servidor de aplicação: WILDFLY 10.1.0
 * Banco de dados: MYSQL( Connector/J 5.1.42 )
