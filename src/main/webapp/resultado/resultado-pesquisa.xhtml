@@ -1,8 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:of="http://omnifaces.org/functions">
 
@@ -20,8 +20,6 @@ body {
 		<div class="ui-g-4" align="center" style="margin: 0 auto;">
 			<p:panel>
 
-				<h:form>
-
 					<p:panel header="Dados da Reserva">
 					
 						<h:panelGrid columns="1" width="100%;">
@@ -31,34 +29,32 @@ body {
 							cellpadding="20" border="2">
 							
 							<p:outputLabel value="Título do filme:" style="font-weight: bold" />
-							<p:outputLabel value="#{buscaReservaMB.reserva.sessao.filme.titulo}" />
+							<p:outputLabel value="#{resultadoPesquisaBean.reserva.sessao.filme.titulo}" />
 							<p:outputLabel value="Horario:" style="font-weight: bold" />
 							<p:outputLabel
-								value="#{of:formatDate(buscaReservaMB.reserva.sessao.horario.hora, 'HH:mm')}h" />
+								value="#{of:formatDate(resultadoPesquisaBean.reserva.sessao.horario.hora, 'HH:mm')}h" />
 							<p:outputLabel value="Sala:" style="font-weight: bold" />
-							<p:outputLabel value="#{buscaReservaMB.reserva.sessao.sala.numero}" />
+							<p:outputLabel value="#{resultadoPesquisaBean.reserva.sessao.sala.numero}" />
 							<p:outputLabel value="Assento:" style="font-weight: bold" />
-							<p:outputLabel value="#{buscaReservaMB.reserva.assento.numeracao}" />
-
+							<p:outputLabel value="#{resultadoPesquisaBean.reserva.assento.numeracao}" />
 
 						</h:panelGrid>
 
-							<p:commandButton
-								action="#{buscaReservaMB.voltar()}"
+							<p:button
+								outcome="/index.xhtml"
 								value="Voltar ao início"
 								style="padding: 5px; width:100%;"
 								icon="ui-icon-home" />
 								
 						</h:panelGrid>
 
-						
 					</p:panel>
 					<h:panelGrid width="100%">
-					<p:commandButton action="#{buscaReservaMB.voltarPesquisa()}"
+					
+					<p:button outcome="/views/busca-reserva"
 							value="Voltar" styleClass="ui-priority-primary"
 							icon="ui-icon-arrowthick-1-w" style="margin: 10px 0 0 0; float:left"/>
 					</h:panelGrid>
-				</h:form>
 
 			</p:panel>
 		</div>

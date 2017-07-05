@@ -1,8 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
 
 
@@ -20,10 +20,8 @@ body {
 			<p:messages id="messages" autoUpdate="true" closable="true" />
 			<p:panel>
 
-
-
-				<p:panel header="Reserva">
-					<h:form>
+				<h:form>
+					<p:panel id="panel" header="Reserva">
 
 						<h:panelGrid columns="1" width="100%;">
 
@@ -31,26 +29,26 @@ body {
 								style="margin: 20px 0 30px 0; text-align: center;" width="100%">
 								<p:outputLabel value="Digite o código da reserva:" for="codigo"
 									style="font-weight: bold;" />
-								<p:inputText id="codigo" value="#{buscaReservaMB.codigo}"
-									style="text-align: center; margin-top: 10px;" required="true" />
+								<p:inputText id="codigo" value="#{resultadoPesquisaBean.codigo}"
+									style="text-align: center; margin-top: 10px;" required="true"/>
 							</h:panelGrid>
 
-							<p:commandButton action="#{buscaReservaMB.exibirResultado()}"
+							<p:commandButton
+								action="#{resultadoPesquisaBean.exibirResultado}"
 								value="Procurar" style="padding: 5px; width:100%;"
-								icon="ui-icon-search" />
+								icon="ui-icon-search"/>
 
 						</h:panelGrid>
 
-					</h:form>
-				</p:panel>
+					</p:panel>
+				</h:form>
+
 				<h:panelGrid width="100%">
 
-					<h:form>
-						<p:commandButton action="#{buscaReservaMB.voltar()}"
-							value="Voltar" styleClass="ui-priority-primary"
-							icon="ui-icon-arrowthick-1-w"
-							style="margin: 10px 0 0 0; float:left" />
-					</h:form>
+					<p:button outcome="/index.xhtml" value="Voltar"
+						styleClass="ui-priority-primary" icon="ui-icon-arrowthick-1-w"
+						style="margin: 10px 0 0 0; float:left" />
+
 				</h:panelGrid>
 
 

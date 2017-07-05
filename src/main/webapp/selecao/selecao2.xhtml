@@ -1,8 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:of="http://omnifaces.org/functions">
 
@@ -16,10 +16,13 @@
 </style>
 
 </h:head>
+
+<f:metadata>
+	<f:viewAction action="#{selecaoBean.initSessao}" />
+</f:metadata>
+
 <body>
-
 	<div class="ui-g">
-
 		<div class="ui-g-5" align="center" style="margin: 0 auto;">
 
 			<p:panel>
@@ -31,42 +34,55 @@
 					<p:menuitem value="Reserva" />
 				</p:steps>
 
+				<p:panel header="Filme" style="width:95%">
+					<h:outputText value="#{selecaoBean.filme.titulo}" />
+				</p:panel>
+				
 				<h:form>
-					<p:panel header="Filme" style="width:95%">
-						<h:outputText value="#{selecaoSessaoMB.filmeSelecionado.titulo}" />
-					</p:panel>
+				
 					<p:panel header="Sessões" style="width:95%; height: 360px;">
-						<h:panelGrid columns="1" cellpadding="20" >
-							
-							<h:selectOneRadio value="#{selecaoSessaoMB.sessaoSelecionada}" layout="pageDirection" style="height: 180px; font-size: 15px; font-weight: bold;" >
-								
-								<f:selectItems value="${selecaoSessaoMB.sessoes}" var="sessao" 
-								itemLabel="Sessão: #{selecaoSessaoMB.sessoes.indexOf(sessao) + 1} - 
+
+						<h:panelGrid columns="1" cellpadding="20">
+
+							<h:selectOneRadio value="#{selecaoBean.sessaoSelecionada}"
+								layout="pageDirection"
+								validator="#{validators.validateSessaoSelecionada}"
+								style="height: 180px; font-size: 15px; font-weight: bold;">
+
+								<f:selectItems value="${selecaoBean.sessoes}" var="sessao"
+									itemLabel="Sessão: #{selecaoBean.sessoes.indexOf(sessao) + 1} - 
 													Horario: #{of:formatDate(sessao.horario.hora, 'HH:mm')}h -
 													Sala: #{sessao.sala.numero}."
-								itemValue="#{sessao.id}">
-								
-								
+									itemValue="#{sessao.id}">
+
 								</f:selectItems>
-								
+
 							</h:selectOneRadio>
+
 						</h:panelGrid>
 
 					</p:panel>
+
 					<p:growl id="growl" showDetail="true" life="3000" />
+
 					<h:panelGrid columns="2" width="97%">
 
-						<p:commandButton action="#{selecaoSessaoMB.voltar()}"
+						<p:commandButton action="selecao?faces-redirect=true"
 							value="Voltar" styleClass="ui-priority-primary"
-							icon="ui-icon-arrowthick-1-w" style="margin: 20px 0 0 5px;" />
+							icon="ui-icon-arrowthick-1-w" style="margin: 20px 0 0 5px;"
+							immediate="true" />
 
-						<p:commandButton actionListener="#{selecaoAssentoMB.gerarAssento()}"  action="#{selecaoSessaoMB.proximo()}" value="Próximo" styleClass="ui-priority-primary"
+						<p:commandButton action="selecao3?faces-redirect=true"
+							value="Próximo" styleClass="ui-priority-primary"
 							icon="ui-icon-arrowthick-1-e" update="growl"
-							style="margin: 20px 2px 0 0; float: right;"/>
-							
+							style="margin: 20px 2px 0 0; float: right;" />
+
 					</h:panelGrid>
+
 				</h:form>
+
 			</p:panel>
+
 		</div>
 	</div>
 
