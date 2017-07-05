@@ -6,3 +6,5 @@ target/
 .project
 .tern-project
 src/teste/
+syntax: regexp
+\.jsfdia$
